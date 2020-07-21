@@ -1,12 +1,18 @@
-<mat-toolbar color="primary">Database of Cars</mat-toolbar>
-<mat-tab-group>
-  <mat-tab label="Home"></mat-tab>
-  <mat-tab label="Manufacturer">
-    <h1>Manufacturer</h1>
-    <app-manufacturer-list></app-manufacturer-list>
-  </mat-tab>
-  <mat-tab label="Car">
-    <h1>Car</h1>
-    <app-car-list></app-car-list>
-  </mat-tab>
-</mat-tab-group>
+<mat-toolbar color="primary">
+  <span>Database of Cars</span>
+  <span class="spacer"></span>
+  <a *ngIf="userIsAuthenticated" mat-button [matMenuTriggerFor]="manufacturer">Manufacturer</a>
+  <a *ngIf="userIsAuthenticated" mat-button [matMenuTriggerFor]="car">Car</a>
+
+  <mat-menu #manufacturer="matMenu">
+    <a mat-button routerLink="/manufacturer" routerLinkActive="mat-accent">List</a><br>
+    <a mat-button routerLink="/manufacturer/create" routerLinkActive="mat-accent">Create</a>
+  </mat-menu>
+
+  <mat-menu #car="matMenu">
+    <a mat-button routerLink="/car" routerLinkActive="mat-accent">List</a><br>
+    <a mat-button routerLink="/car/create" routerLinkActive="mat-accent">Create</a>
+  </mat-menu>
+  <button *ngIf="userIsAuthenticated" mat-button (click)="onLogout()">Logout</button>
+</mat-toolbar>
+

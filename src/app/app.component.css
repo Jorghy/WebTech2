@@ -9,3 +9,8 @@ footer {
   padding-top: 10px;
   color: #fff;
 }
+
+main {
+  width: 80%!important;
+  margin: 0 auto!important;
+}
